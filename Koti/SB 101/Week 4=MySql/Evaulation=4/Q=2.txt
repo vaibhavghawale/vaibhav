@@ -1,0 +1,153 @@
+mysql> create table department
+    -> (
+    -> did int primary key,
+    -> dname varchar(12) not null,
+    -> location varchar(12) not null
+    -> );
+
+
+mysql> create table employee
+     (
+     empid int primary key,
+     ename varchar(12) not null,
+     address varchar(12) not null,
+     mobile varchar(12) not null,
+     salary int not null,
+     deptid int,
+     foreign key (deptid) references department (did)on delete cascade on update set null
+     );
+
+
+/*========== Using SQL insert 4 Department records in the Department table(Account, Sales,Marketing, HR). =================*/
+
+mysql> insert into department values(100,'Marketing','Pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(101,'HR','Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department values(102,'Sales','Hyd');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(103,'Account','Chennai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+| 100 | Marketing | Pune     |
+| 101 | HR        | Mumbai   |
+| 102 | Sales     | Hyd      |
+| 103 | Account   | Chennai  |
++-----+-----------+----------+
+4 rows in set (0.00 sec)
+
+/*=============================================================================================================*/
+mysql> insert into department values(100,'Marketing','Pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(101,'HR','Mumbai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department values(102,'Sales','Hyd');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into department values(103,'Account','Chennai');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1001,'Vaibhav','Nagpur','34567887',50000,103);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1002,'Rakesh','Mumbai','98765987',70000,103);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee values(1003,'Ravi','Pune','345675987',40050,102);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1004,'Allu','Chennai','986675987',36850,102);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1005,'Shuhvindar','Amritsar','566675987',57850,102);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1006,'Sham','Pune','45678767',65850,100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1007,'Ram','Nagpur','97678767',45850,100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(1008,'Anand','Patna','97678767',80850,101);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee values(1009,'Mohit','Mumbai','57678767',70850,101);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from department;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+| 100 | Marketing | Pune     |
+| 101 | HR        | Mumbai   |
+| 102 | Sales     | Hyd      |
+| 103 | Account   | Chennai  |
++-----+-----------+----------+
+4 rows in set (0.00 sec)
+
+
+/*================= Write a SQL query to get the total salary of employees, department-wise. =========================*/
+
+mysql> select dname, sum(salary) from employee INNER JOIN department on did = deptid group by dname;
++-----------+-------------+
+| dname     | sum(salary) |
++-----------+-------------+
+| Marketing |      111700 |
+| HR        |      151700 |
+| Sales     |      134750 |
+| Account   |      120000 |
++-----------+-------------+
+4 rows in set (0.01 sec)
+
+
+/*====================== Write a SQL query to get all the employee details who enrolled in the Sales department ==========================*/
+
+mysql> select * from employee INNER JOIN department on did = deptid And dname = 'sales';
++-------+------------+----------+-----------+--------+--------+-----+-------+----------+
+| empid | ename      | address  | mobile    | salary | deptid | did | dname | location |
++-------+------------+----------+-----------+--------+--------+-----+-------+----------+
+|  1003 | Ravi       | Pune     | 345675987 |  40050 |    102 | 102 | Sales | Hyd      |
+|  1004 | Allu       | Chennai  | 986675987 |  36850 |    102 | 102 | Sales | Hyd      |
+|  1005 | Shuhvindar | Amritsar | 566675987 |  57850 |    102 | 102 | Sales | Hyd      |
++-------+------------+----------+-----------+--------+--------+-----+-------+----------+
+3 rows in set (0.00 sec)
+
+
+/*============ Write a SQL query to get the Department details for an employee based on the empId. ========================*/
+
+mysql>  select did,dname,location from employee INNER JOIN department on did = deptid;
++-----+-----------+----------+
+| did | dname     | location |
++-----+-----------+----------+
+| 100 | Marketing | Pune     |
+| 100 | Marketing | Pune     |
+| 101 | HR        | Mumbai   |
+| 101 | HR        | Mumbai   |
+| 102 | Sales     | Hyd      |
+| 102 | Sales     | Hyd      |
+| 102 | Sales     | Hyd      |
+| 103 | Account   | Chennai  |
+| 103 | Account   | Chennai  |
++-----+-----------+----------+
+9 rows in set (0.00 sec)
+
+
+/*================== Write a SQL query to get the second highest salary paid employee from the Employee table ===================*/
+
+mysql> select * from employee where salary = (select max(salary) from employee where salary < (select max(salary) from employee));
++-------+-------+---------+----------+--------+--------+
+| empid | ename | address | mobile   | salary | deptid |
++-------+-------+---------+----------+--------+--------+
+|  1009 | Mohit | Mumbai  | 57678767 |  70850 |    101 |
++-------+-------+---------+----------+--------+--------+
+1 row in set (0.00 sec)
+

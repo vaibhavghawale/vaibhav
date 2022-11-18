@@ -1,0 +1,37 @@
+Q1.What are the advantages of using Hibernate over JDBC?
+
+Hibernate is a frame work used to develop application in java.JDBC is an API to connect and execute queries.
+
+the following are advantages of using Hibernate over JDBC
+1.The Hibernate not dependent on the database.
+2.Hibernate creates more shorter and optimized code.
+3.Lazy loading of data can be achieved with Hibernate.
+4.Hibernate comes with caching mechanism.
+5.Associate mapping can be done while using Hibernate. 
+
+
+Question 2:
+-----------
+1) Explain difference between JPA and Hibernate.
+  
+JPA(Java Persistence API):
+1.It defines management of relational data in the java application.
+2.Various ORM tools implement it for data persistence.
+3.In JPA ,We use EntityManagerFactory interface is used.
+4.It is defined in javax.persistence package.
+
+
+Hibernate:
+1.It is an Object-Relational Mapping(ORM) tool which is used to save the state of java object into the database.
+2.It is one of the most frequently used JPA implementation.
+3.It uses SessionFactory interface to create Session instances.
+4.It is defined in org.hibernate package.
+
+
+2) Explain the Life-cycle of Entity class with example
+ The life cycle of an entity instance is managed by its entity manager.An entity manager 
+instance is associated with a persistence context. within this persistence context,the entity instances and their life cycle are managed.
+
+
+
+

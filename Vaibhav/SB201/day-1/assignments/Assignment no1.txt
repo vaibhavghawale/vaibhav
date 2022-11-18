@@ -1,0 +1,148 @@
+Q2. When should one use Maven?
+
+Ans:= 
+Defination : Maven is a tool that can now be used for building and managing any Java-based project. It makes the day-to-day
+work of Java developers easier and generally help with the comprehension of any Java-based project.
+
+
+Imagine without any build tool maven, gradle or ant how are you going to compile class by class and it's going to take lot of time in the real 
+time applications. 
+Real-time applications will have thousands of java files which needs to be compiled automatically and create package for it. Jar or war or ear.
+
+All this can be achieved with build tools
+---------------------------X--------------------------------X----------------------------------------------X---------------------------------X--------------
+
+
+3. Explain the core concepts of Maven.
+Ans:-
+Maven is based on the concept of project object model (POM) file. POM is an XML file which contains project resources like source code, test code and dependencies (external JARs) etc. The POM file should be in the project’s root directory.
+Maven reads the pom.xml file.
+Downloads dependencies into local repository.
+Execute life cycles, build phases and goals.
+Execute plugins.
+Maven Core Concepts:
+
+POM Files
+Build Life Cycles, Phases and Goals
+Dependencies and Repositories
+Build Plugins
+Build Profiles
+
+----------------------X--------------------------------------X------------------------------------------X----------------------------------X----------------
+
+4.Explain about the basic properties of pom.xml file.
+Ans:- 
+POM stands for Project Object Model this file contains the project information and configuration details for Maven to build the project. It contains 
+information such as dependencies, source directory, a build directory, plugins, goals, etc.Maven reads the pom.xml file and executes the desired goal .
+older version of Maven 2 this file was named as project.xml, for the latest version since Maven 2 this file was renamed as POM.XML.
+
+POM.XML stores some additional information such as project version, mailing lists, description. When maven is executing goals and tasks maven searches 
+for POM.XML in the current directory. It reads configuration from pom file and executes the desired goal. pom is a fundamental unit file to work in maven.
+
+Super POM is mavens default POM.XML file.
+It contains some default values for most of the projects.
+
+
+------------------------------------------X----------------------------------X_----------------------------X_-----------------------------------X-----------
+
+
+5. A Build Lifecycle is a well-defined sequence of phases, which define the order in which the goals are to be executed. Here phase represents a stage in
+ life cycle. As an example, a typical Maven Build Lifecycle consists of the following sequence of phases.
+There are always pre and post phases to register goals, which must run prior to, or after a particular phase.
+
+When Maven starts building a project, it steps through a defined sequence of phases and executes goals, which are registered with each phase.
+
+Maven has the following three standard lifecycles −
+
+clean
+default(or build)
+site
+A goal represents a specific task which contributes to the building and managing of a project. It may be bound to zero or more build phases. A goal not bound to any build phase could be executed outside of the build lifecycle by direct invocation.
+
+The order of execution depends on the order in which the goal(s) and the build phase(s) are invoked. For example, consider the command below. The clean and package arguments are build phases while the dependency:copy-dependencies is a goal.
+
+mvn clean dependency:copy-dependencies package
+Here the clean phase will be executed first, followed by the dependency:copy-dependencies goal, and finally package phase will be executed.
+
+Clean Lifecycle
+When we execute mvn post-clean command, Maven invokes the clean lifecycle consisting of the following phases.
+
+pre-clean
+clean
+post-clean
+Maven clean goal (clean:clean) is bound to the clean phase in the clean lifecycle. Its clean:cleangoal deletes the output of a build by deleting the build directory. Thus, when mvn clean command executes, Maven deletes the build directory.
+
+We can customize this behavior by mentioning goals in any of the above phases of clean life cycle.
+
+In the following example, We'll attach maven-antrun-plugin:run goal to the pre-clean, clean, and post-clean phases. This will allow us to echo text messages displaying the phases of the clean lifecycle.
+
+
+--------------------------------------------X---------------------------------X_--------------------------------------X--------------------------------------
+6. What are the different types of Maven repositories?
+Ans:-
+In Maven terminology, a repository is a directory where all the project jars, library jar, plugins or any other project specific artifacts are stored and can be used by Maven easily.
+
+Maven repository are of three types. The following illustration will give an idea regarding these three types.
+
+local
+central
+remote
+
+Local Repository
+Maven local repository is a folder location on your machine. It gets created when you run any maven command for the first time.
+
+Maven local repository keeps your project's all dependencies (library jars, plugin jars etc.). When you run a Maven build, then Maven automatically downloads all the dependency jars into the local repository. It helps to avoid references to dependencies stored on remote machine every time a project is build.
+
+Central Repository
+Maven central repository is repository provided by Maven community. It contains a large number of commonly used libraries.
+
+Sometimes, Maven does not find a mentioned dependency in central repository as well. It then stops the build process and output error message to console. To prevent such situation, Maven provides concept of Remote Repository,
+
+------------------------------------X-----------------------------------X-------------------------------X----------------X-------------------------------
+
+
+7.
+
+Prime attributes
+Attributes of the database tables which are candidate keys of the database tables are called prime attributes.
+
+Example of Prime attributes
+As we can see in the figure, Registratin_no and Rollno are the candidate keys, so both of these are primary attributes of the table.
+Non-prime attributes
+Attributes of the database tables which do not exist in any of the possible candidate keys of the database tables are called non-prime attributes.
+
+Example of Non-Prime attributes
+As we can see in the figure, Registratin_no and Rollno are the candidate keys, and all other keys are not candidate keys, so all other keys(attribute) are non-prime attributes of the table.
+
+Difference between Non-prime attributes and Non-Key attributes?
+There is no difference because both are the same. The non-prime attributes also called Non-Key attributes.
+
+------------------------------------X-----------------------------X_------------------------------------X------------------------------------X---------------
+
+
+8. 
+Ans:= A large database defined as a single relation may result in data duplication. This repetition of data may result in:
+
+Making relations very large.
+It isn't easy to maintain and update data as it would involve searching many records in relation.
+Wastage and poor utilization of disk space and resources.
+The likelihood of errors and inconsistencies increases.
+So to handle these problems, we should analyze and decompose the relations with redundant data into smaller, simpler, and well-structured relations that are satisfy desirable properties. Normalization is a process of decomposing the relations into relations with fewer attributes.
+
+What is Normalization?
+Normalization is the process of organizing the data in the database.
+Normalization is used to minimize the redundancy from a relation or set of relations. It is also used to eliminate undesirable characteristics like Insertion, Update, and Deletion Anomalies.
+Normalization divides the larger table into smaller and links them using relationships.
+The normal form is used to reduce redundancy from the database table.
+Why do we need Normalization?
+
+The main reason for normalizing the relations is removing these anomalies. Failure to eliminate anomalies leads to data redundancy and can cause data integrity and other problems as the database grows. Normalization consists of a series of guidelines that helps to guide you in creating a good database structure.
+
+Data modification anomalies can be categorized into three types:
+
+Insertion Anomaly: Insertion Anomaly refers to when one cannot insert a new tuple into a relationship due to lack of data.
+Deletion Anomaly: The delete anomaly refers to the situation where the deletion of data results in the unintended loss of some other important data.
+Updatation Anomaly: The update anomaly is when an update of a single data value requires multiple rows of data to be updated.
+Types of Normal Forms:
+Normalization works through a series of stages called Normal forms. The normal forms apply to individual relations. The relation is said to be in particular normal form if it satisfies constraints.
+

@@ -1,0 +1,17 @@
+Q1/- Explain the Java-based Spring MVC architecture.
+
+Spring MVC: Spring MVC is a Web MVC Framework for building web applications. It contains a lot of configuration files for various
+capabilities. It is an HTTP oriented web application development framework.
+
+Spring MVC framework enables separation of modules namely Model, View and Controller and seamlessly handles the application integration. This enables the developer to create complex applications also using plain java classes. The model object can be passed between view and controller using maps. 
+
+The Spring MVC framework is comprised of the following components: 
+ 
+
+Model: A model can be an object or collection of objects which basically contains the data of the application.
+
+View: A view is used for displaying the information to the user in a specific format. Spring supports various technologies like freemarker, velocity and thymeleaf.
+
+Controller: It contains the logical part of the application. @Controller annotation is used to mark that class as controller.
+
+Front Controller: It remains responsible for managing the flow of the web application. DispatcherServlet acts as a front controller in spring MVC.

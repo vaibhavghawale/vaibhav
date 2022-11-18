@@ -1,0 +1,4 @@
+Q4 Explain the properties of JPA(Java Persistence API)
+
+Data Persistence is a means for an application to persist and retrieve information from a non-volatile storage system. Persistence is vital to enterprise applications because of the required access to relational databases. Applications that are developed for this environment must manage persistence themselves or use third-party solutions to handle database updates and retrievals with persistence. The Java™ Persistence API (JPA) provides a mechanism for managing persistence and object-relational mapping and functions since the EJB 3.0 specifications.
+

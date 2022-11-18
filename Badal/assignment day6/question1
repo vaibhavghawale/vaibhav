@@ -1,0 +1,71 @@
+Q1/ - Write down some predefined Functional interfaces in the java library at
+ least 4 interfaces, with their methods.
+ 
+ ans :
+ 
+ Some predefined Functional Interface in java are -
+	 i.   Predicate
+	 ii.  Supplier
+	 iii. Consumer
+	 iv.  Function
+	 
+ i. Consumer -
+  
+  A consumer is someone who “consumes” something. So naturally, when 
+  it comes to the Consumer interface, it has a single abstract method that
+  accepts one argument of type <T> but returns nothing. The Consumer interface 
+  is defined in the java.util.function package as:
+  
+  methods-
+  package java.util.function;
+	@FunctionalInterface
+	public interface Consumer<T> {
+	    void accept(T var1);
+	    
+	}
+
+ii. Supplier -
+
+ If a consumer “consumes” your input, a supplier “supplies” you an output.
+ The Supplier interface defined in the java.util.function package has a single 
+ abstract method get that doesn’t accept any argument and returns an object of 
+ type <T>
+ 
+   methods -
+   package java.util.function;
+
+	@FunctionalInterface
+	public interface Supplier<T> {
+	    T get();
+	}
+ 
+ 
+ iii. Predicate -
+
+	this interface has only one abstract method. this test() method checks whether supplied object is satisfying a 
+	condition or not.
+	
+	
+    methods -
+    
+	interface Predicate<T>{
+	
+	public boolean test(T t);
+	
+	}
+
+ iv. Function -
+ 
+    A "function" is something that takes an input ‘x’, does some processing over
+    this input and in turn returns an output ‘y’. Similarly, the Function<T, R> 
+    functional interface, present in the java.util.function package, has a method apply,
+    that takes one argument of type <T> and returns a value of type <R>:
+    
+    @FunctionalInterface
+	public interface Function<T, R> {
+	    R apply(T var1);
+	
+	   
+	}
+
+ 

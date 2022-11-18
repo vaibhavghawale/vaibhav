@@ -1,0 +1,89 @@
+Q1-> Explain Layared Architecture in Business application
+Ans:= 
+A Layered Architecture, as I understand it, is the organization of the project structure into four main categories: presentation, application, domain, and infrastructure. Each of the layers contains objects related to the particular concern it represents.
+
+The presentation layer contains all of the classes responsible for presenting the UI to the end-user or sending the response back to the client (in case we’re operating deep in the back-end).
+The application layer contains all the logic that is required by the application to meet its functional requirements and, at the same time, is not a part of the domain rules. In most systems that I've worked with, the application layer consisted of services orchestrating the domain objects to fulfill a use case scenario.
+The domain layer represents the underlying domain, mostly consisting of domain entities and, in some cases, services. Business rules, like invariants and algorithms, should all stay in this layer.
+The infrastructure layer (also known as the persistence layer) contains all the classes responsible for doing the technical stuff, like persisting the data in the database, like DAOs, repositories, or whatever else you’re using.
+There are two important rules for a classical Layered Architecture to be correctly implemented:
+
+All the dependencies go in one direction, from presentation to infrastructure. (Well, handling persistence and domain are a bit tricky because the infrastructure layer often saves domain objects directly, so it actually knows about the classes in the domain)
+No logic related to one layer’s concern should be placed in another layer. For instance, no domain logic or database queries should be done in the UI.
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--
+
+Q2.limitation of JDBC based persistence logic over JPA
+Ans:=
+
+What Is JDBC
+JDBC is a programming-level interface for Java applications that communicate with a database. An application uses this API to communicate with a JDBC manager. It's the common API that our application code uses to communicate with the database. Beyond the API is the vendor-supplied, JDBC-compliant driver for the database we're using.
+
+What Is JPA
+JPA is a Java standard that allows us to bind Java objects to records in a relational database. It's one possible approach to Object Relationship Mapping(ORM), allowing the developer to retrieve, store, update, and delete data in a relational database using Java objects. Several implementations are available for the JPA specification.
+
+JPA vs JDBC
+When it comes to deciding how to communicate with back-end database systems, software architects face a significant technological challenge. The debate between JPA and JDBC is often the deciding factor, as the two database technologies take very different approaches to work with persistent data. Let’s analyze the key differences between them.
+
+
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--
+Q3. Differentiate between Hibernate and JPA
+Ans:=
+Java Persistence API (JPA) defines the management of relational data in the Java applications.	Hibernate is an Object-Relational Mapping (ORM) tool which is used to save the state of Java object into the database.
+It is just a specification. Various ORM tools implement it for data persistence.	It is one of the most frequently used JPA implementation.
+It is defined in javax.persistence package.	It is defined in org.hibernate package.
+The EntityManagerFactory interface is used to interact with the entity manager factory for the persistence unit. Thus, it provides an entity manager.	It uses SessionFactory interface to create Session instances.
+It uses EntityManager interface to create, read, and delete operations for instances of mapped entity classes. This interface interacts with the persistence context.	It uses Session interface to create, read, and delete operations for instances of mapped entity classes. It behaves as a runtime interface between a Java application and Hibernate.
+It uses Java Persistence Query Language (JPQL) as an object-oriented query language to perform database operations.	It uses Hibernate Query Language (HQL) as an object-oriented query language to perform database operations.
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--
+Q4 Explain the properties of JPA(Java Persistence API)
+Ans:=
+Mapping Java objects to database tables and vice versa is called Object-relational mapping (ORM). The Java Persistence API (JPA) is one possible approach to ORM. Via JPA the developer can map, store, update and retrieve data from relational databases to Java objects and vice versa. JPA can be used in Java-EE and Java-SE applications.
+
+JPA is a specification and several implementations are available. Popular implementations are Hibernate, EclipseLink and Apache OpenJPA. The reference implementation of JPA is EclipseLink.
+
+JPA permits the developer to work directly with objects rather than with SQL statements. The JPA implementation is typically called persistence provider.
+
+The mapping between Java objects and database tables is defined via persistence metadata. The JPA provider will use the persistence metadata information to perform the correct database operations.
+
+JPA metadata is typically defined via annotations in the Java class. Alternatively, the metadata can be defined via XML or a combination of both. A XML configuration overwrites the annotations.
+
+The following description is based on the usage of annotations.
+
+JPA defines a SQL-like Query language for static and dynamic queries.
+
+Most JPA persistence providers offer the option to create the database schema automatically based on the metadata.
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--
+Q5. Why to use ORM and What are the benefits of ORM?
+Ans:=
+ORM performs the rather amazing task of managing the application's interactions with the database. Once you've used an ORM's tools to create mappings and objects for use in an application, those objects completely manage the application's data access needs. You won't have to write any other low-level data access code. Strictly speaking, you could still write low-level data access code to supplement the ORM data objects, but this adds a significant layer of complexity to an application that we've rarely found necessary when using a robust ORM tool. It is better to stick to one or the other and keep the application simpler and more maintainable.
+
+There are a number of benefits to using an ORM for development of databased applications and here's four:
+
+Productivity: The data access code is usually a significant portion of a typical application, and the time needed to write that code can be a significant portion of the overall development schedule. When using an ORM tool, the amount of code is unlikely to be reduced-in fact, it might even go up-but the ORM tool generates 100% of the data access code automatically based on the data model you define, in mere moments.
+Application design: A good ORM tool designed by very experienced software architects will implement effective design patterns that almost force you to use good programming practices in an application. This can help support a clean separation of concerns and independent development that allows parallel, simultaneous development of application layers.
+Code Reuse: If you create a class library to generate a separate DLL for the ORM-generated data access code, you can easily reuse the data objects in a variety of applications. This way, each of the applications that use the class library need have no data access code at all.
+Application Maintainability: All of the code generated by the ORM is presumably well-tested, so you usually don't need to worry about testing it extensively. Obviously you need to make sure that the code does what you need, but a widely used ORM is likely to have code banged on by many developers at all skill levels. Over the long term, you can refactor the database schema or the model definition without affecting how the application uses the data objects.
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--
+Q6 what is Core Components of Hibernate explain
+Ans:=
+What is Hibernate?
+Hibernate is the implementation of JPA (Java Persistence API). Hibernate is also called Hibernate ORM. Hibernate is an object-relational mapping framework for the Java language. Hibernate’s primary feature is mapping from Java classes to database tables and vice versa. Hibernate supported query is known as Hibernate Query Language (HQL).
+
+Core components of Hibernate
+Below are the important elements of Hibernate
+
+hibernate.cfg.xml: This file has database connection details
+hbm.xml or Annotation: Defines the database table mapping with POJO. Also defines the relation between tables in java way.
+SessionFactory:
+There will be a session factory per database.
+The SessionFacory is built once at start-up
+It is a thread safe class
+SessionFactory will create a new Session object when requested
+Session:
+The Session object will get physical connection to the database.
+Session is the Java object used for any DB operations.
+Session is not thread safe. Hence do not share hibernate session between threads
+Session represents unit of work with database
+Session should be closed once the task is completed
+
+-----------------------X---------------------------------X------------------------------------X-------------------X--------------------------X-------------------------X-----------------------X--

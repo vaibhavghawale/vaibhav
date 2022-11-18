@@ -1,0 +1,15 @@
+Explain what a Primary key, Candidate Key, Prime Attributes, and Non-prime Attributes is.
+
+Prime attributes
+Attributes of the database tables which are candidate keys of the database tables are called prime attributes.
+
+Example of Prime attributes
+As we can see in the figure, Registratin_no and Rollno are the candidate keys, so both of these are primary attributes of the table.
+Non-prime attributes
+Attributes of the database tables which do not exist in any of the possible candidate keys of the database tables are called non-prime attributes.
+
+Example of Non-Prime attributes
+As we can see in the figure, Registratin_no and Rollno are the candidate keys, and all other keys are not candidate keys, so all other keys(attribute) are non-prime attributes of the table.
+
+Difference between Non-prime attributes and Non-Key attributes?
+There is no difference because both are the same. The non-prime attributes also called Non-Key attributes.

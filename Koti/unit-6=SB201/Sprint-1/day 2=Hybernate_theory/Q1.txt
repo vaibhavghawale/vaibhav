@@ -1,0 +1,28 @@
+Explain Layared Architecture in Business application?
+
+1.maintaining the business data in secure and easily retrival manner.
+
+--the logic that we write to implement this part of business application is known as Data Accees Logic.
+
+2.processing the data according to the business rule .
+
+--the logic that we write to implement this part of business application is known as Business/Service logic.
+
+3.presenting the data to the user in user-understandable format.
+
+--the logic that we write to implement this part of business application is known as Presentation logic.
+
+
+--the above 3 logics is required for almost every business application.
+
+class MyBusinessApplication{
+
+//Data Access Logic  // fetch the account information from the DB
+
+//Business Logic //calculating the Intreset to the balance
+
+//Presentation Logic // display the information to the client
+
+
+
+}

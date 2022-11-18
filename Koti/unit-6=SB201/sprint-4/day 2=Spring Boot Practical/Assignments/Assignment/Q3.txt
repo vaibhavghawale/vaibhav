@@ -1,0 +1,20 @@
+Q3/- What is the difference between SOAP and REST ?
+
+SOAP:
+=====
+1.SOAP stands for Simple Object Access Protocol
+2.SOAP is a protocol. SOAP was designed with a specification. It includes a WSDL file which has the required information on what the web service does in addition to the location of the web service.
+3.SOAP cannot make use of REST since SOAP is a protocol and REST is an architectural pattern.
+4.SOAP uses service interfaces to expose its functionality to client applications. In SOAP, the WSDL file provides the client with the necessary information which can be used to understand what services the web service can offer.
+5.SOAP can only work with XML format. As seen from SOAP messages, all data passed is in XML format.
+
+REST:
+=====
+1.REST stands for Representational State Transfer
+2.REST is an Architectural style in which a web service can only be treated as a RESTful service if it follows the constraints of being
+Client Server, Stateless, Cacheable, Layered System, Uniform Interface
+3.REST can make use of SOAP as the underlying protocol for web services, because in the end it is just an architectural pattern.
+4.REST use Uniform Service locators to access to the components on the hardware device. For example, if there is an object which represents the data of an employee hosted on a URL as http://demo.guru99 , the below are some of URI that can exist to access them.
+http://demo.guru99.com/Employee
+http://demo.guru99.com/Employee/1
+5.REST permits different data format such as Plain text, HTML, XML, JSON, etc. But the most preferred format for transferring data is JSON.

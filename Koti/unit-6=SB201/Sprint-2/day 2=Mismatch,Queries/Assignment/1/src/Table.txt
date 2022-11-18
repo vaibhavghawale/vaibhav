@@ -1,0 +1,77 @@
+mysql> create database day3;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> use day3;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_day3     |
++--------------------+
+| customer           |
+| customer_addresses |
+| hibernate_sequence |
++--------------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from customer;
++-----+-----------+--------------+-------+
+| cid | email     | mobileNumber | name  |
++-----+-----------+--------------+-------+
+|   1 | Koti@123  | 9014565789   | Koti  |
+|   2 | Divya@123 | 8614565789   | Divya |
++-----+-----------+--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customer_addresses;
++--------------+-----------+---------+-----------+---------+
+| Customer_cid | city      | pincode | state     | type    |
++--------------+-----------+---------+-----------+---------+
+|            1 | Krishna   | 521214  | AP        | Home    |
+|            1 | Hyderabad | 546510  | Telangana | Office  |
+|            1 | Mylavaram | 520056  | AP        | College |
+|            2 | Chennai   | 565656  | TN        | Home    |
+|            2 | Bangalore | 575757  | Karnataka | Office  |
+|            2 | Mylavaram | 520056  | AP        | College |
++--------------+-----------+---------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_day3     |
++--------------------+
+| customer           |
+| customer_addresses |
+| emp                |
+| hibernate_sequence |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from customer;
++-----+-----------+--------------+-------+
+| cid | email     | mobileNumber | name  |
++-----+-----------+--------------+-------+
+|   1 | Koti@123  | 9014565789   | Koti  |
+|   2 | Divya@123 | 8614565789   | Divya |
++-----+-----------+--------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp;
++--------+-----------+---------+-----------+---------+
+| emp_id | city      | pincode | state     | type    |
++--------+-----------+---------+-----------+---------+
+|      1 | Krishna   | 521214  | AP        | Home    |
+|      1 | Hyderabad | 546510  | Telangana | Office  |
+|      1 | Mylavaram | 520056  | AP        | College |
+|      2 | Chennai   | 565656  | TN        | Home    |
+|      2 | Bangalore | 575757  | Karnataka | Office  |
+|      2 | Mylavaram | 520056  | AP        | College |
++--------+-----------+---------+-----------+---------+
+6 rows in set (0.00 sec)

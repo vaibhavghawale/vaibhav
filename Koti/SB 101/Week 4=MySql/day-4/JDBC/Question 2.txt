@@ -1,0 +1,19 @@
+Q2/ Write an application to establish the connection between the Java application and Mysql database Server.
+
+step of connect our java application with the DB server (mysql):
+==============================================================
+
+1. download/get the jdbc driver related jar file (mysql-connector.jar) and set that jar file inside the classpath of our application.
+
+2.Load the Driver related main class into the memory.
+
+3. prepare the Connection string.
+
+4. establish the connection.
+
+5.after performing the CRUD operation close the connection.
+
+Setting the jar file in the classpath of our application:
+---------------------------------------------------------
+
+rightclick on the project----> build path ----> configure build path---->libraries---->Classpath---->Add External jars--->select the downloaded jar file ----> apply and close.

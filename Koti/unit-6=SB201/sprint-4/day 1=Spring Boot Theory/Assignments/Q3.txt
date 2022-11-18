@@ -1,0 +1,24 @@
+Q3/- What is the difference between WebApplication and Web-services?
+
+ Web Service:
+=============
+1.A web service doesn’t have a user interface.
+2.Web services are meant for other applications to be interacted with over the internet.
+3.Web services are platform independent as they use open protocols
+4.Web services are accessed by HTTP methods – GET, POST, PUT, DELETE, etc.
+5.E.g. Google maps API is a web service that can be used by websites to display Maps by passing coordinates to it.
+
+
+WebApplication:
+===============
+1.A website has a user interface or GUI.
+2.Websites are meant for use by humans.
+3.Websites are cross-platform as they require tweaking to operate on different browsers, operating systems, etc.
+4.Websites are accessed by using their GUI components – buttons, text boxes, forms, etc.
+5.E.g. ArtOfTesting.com is a website that has a collection of related web pages containing tutorials.
+
+
+
+
+
+	

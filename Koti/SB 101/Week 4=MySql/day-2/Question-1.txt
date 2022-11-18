@@ -1,0 +1,106 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| day1               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| web18              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database day2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day2;
+Database changed
+
+mysql> CREATE TABLE customers (
+    -> customer_id INT PRIMARY KEY,
+    -> first_name VARCHAR(255) NOT NULL,
+    -> last_name VARCHAR(255) NOT NULL,
+    -> email VARCHAR(255) NOT NULL,
+    -> address VARCHAR(255) DEFAULT NULL,
+    -> city VARCHAR(255) DEFAULT NULL,
+    -> state VARCHAR(2) DEFAULT NULL,
+    -> zip_code VARCHAR(5) DEFAULT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE orders (
+    -> order_id INT PRIMARY KEY,
+    -> customer_id INT NOT NULL,
+    -> order_placed_date DATE NOT NULL,
+    -> FOREIGN KEY (customer_id) REFERENCES customers
+    -> (customer_id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_day2 |
++----------------+
+| customers      |
+| orders         |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc customers;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| customer_id | int          | NO   | PRI | NULL    |       |
+| first_name  | varchar(255) | NO   |     | NULL    |       |
+| last_name   | varchar(255) | NO   |     | NULL    |       |
+| email       | varchar(255) | NO   |     | NULL    |       |
+| address     | varchar(255) | YES  |     | NULL    |       |
+| city        | varchar(255) | YES  |     | NULL    |       |
+| state       | varchar(2)   | YES  |     | NULL    |       |
+| zip_code    | varchar(5)   | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc orders;
++-------------------+------+------+-----+---------+-------+
+| Field             | Type | Null | Key | Default | Extra |
++-------------------+------+------+-----+---------+-------+
+| order_id          | int  | NO   | PRI | NULL    |       |
+| customer_id       | int  | NO   | MUL | NULL    |       |
+| order_placed_date | date | NO   |     | NULL    |       |
++-------------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from orders;
++----------+-------------+-------------------+
+| order_id | customer_id | order_placed_date |
++----------+-------------+-------------------+
+|        1 |           1 | 2016-11-11        |
+|        2 |           1 | 2016-10-01        |
+|        3 |           2 | 2016-06-01        |
+|        4 |           2 | 2015-06-01        |
+|        5 |           1 | 2015-06-01        |
++----------+-------------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from customers;
++-------------+------------+-----------+--------------+------------+-----------+-------+----------+
+| customer_id | first_name | last_name | email        | address    | city      | state | zip_code |
++-------------+------------+-----------+--------------+------------+-----------+-------+----------+
+|           1 | abc        | a         | abc@mail.com | 1st street | chennai   | TN    | 60001    |
+|           2 | efg        | e         | efg@mail.com | 2nd street | bangalore | KA    | 50002    |
+|           3 | ijk        | i         | ijk@mail.com | 3rd street | Mumbai    | MH    | 40002    |
++-------------+------------+-----------+--------------+------------+-----------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select customers.email,count(customers.email )order_count from customers inner join orders on customers.customer_id=orders.customer_id where order_placed_date > '2015-12-31' and orders.order_placed_date < '2017-01-01' group by customers.email order by order_count desc;
++--------------+-------------+
+| email        | order_count |
++--------------+-------------+
+| abc@mail.com |           2 |
+| efg@mail.com |           1 |
++--------------+-------------+
+2 rows in set (0.01 sec)
+

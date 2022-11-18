@@ -1,0 +1,3 @@
+When should one use Maven?
+
+It is Type of Build automation .Maven is chiefly used for Java-based projects, helping to download dependencies, which refers to the libraries or JAR files. The tool helps get the right JAR files for each project as there may be different versions of separate packages.

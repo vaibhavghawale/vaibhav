@@ -1,0 +1,103 @@
+mysql> create databse day4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databse day4' at line 1
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+
+mysql> create table faculty(FacultyID int,Name varchar(250),Department varchar(250),Gender varchar(25),Salary int,Working_hours int,Vacation_hours int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into faculty values
+          (001,'Aakash','CS','M',50000,45,null),
+          (002,'Sahil','EC','M',25000,50,null),
+          (003,'John','HSS','M',100000,60,null),
+          (004,'Shelly','CS','F',75000,80,null),
+          (005,'Anannya','CS','F',45000,100,null),
+          (006,'Sia','HSS','F',60000,40,null);
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| FacultyID      | int          | YES  |     | NULL    |       |
+| Name           | varchar(250) | YES  |     | NULL    |       |
+| Department     | varchar(250) | YES  |     | NULL    |       |
+| Gender         | varchar(25)  | YES  |     | NULL    |       |
+| Salary         | int          | YES  |     | NULL    |       |
+| Working_hours  | int          | YES  |     | NULL    |       |
+| Vacation_hours | int          | YES  |     | NULL    |       |
++----------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from faculty;
++-----------+---------+------------+--------+--------+---------------+----------------+
+| FacultyID | Name    | Department | Gender | Salary | Working_hours | Vacation_hours |
++-----------+---------+------------+--------+--------+---------------+----------------+
+|         1 | Aakash  | CS         | M      |  50000 |            45 |           NULL |
+|         2 | Sahil   | EC         | M      |  25000 |            50 |           NULL |
+|         3 | John    | HSS        | M      | 100000 |            60 |           NULL |
+|         4 | Shelly  | CS         | F      |  75000 |            80 |           NULL |
+|         5 | Anannya | CS         | F      |  45000 |           100 |           NULL |
+|         6 | Sia     | HSS        | F      |  60000 |            40 |           NULL |
++-----------+---------+------------+--------+--------+---------------+----------------+
+6 rows in set (0.00 sec)
+
+/*====== 1st step :We would like to display this table such that if the department name is ‘CS’, it gets modified to ‘Computer Science’, if it is ‘EC’ it gets modified to ‘Electronics and Communication’, and if it is ‘HSS’ it gets modified to ‘Humanities and Social Sciences’. Write the query to display the modified table.=====*/
+
+mysql> update faculty set Department='Electronics and Communication' where Department='EC';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update faculty set Department='Computer Science' where Department='CS';
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> update faculty set Department='Humanities and Social Sciences' where Department='HSS';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from faculty;
++-----------+---------+--------------------------------+--------+--------+---------------+----------------+
+| FacultyID | Name    | Department                     | Gender | Salary | Working_hours | Vacation_hours |
++-----------+---------+--------------------------------+--------+--------+---------------+----------------+
+|         1 | Aakash  | Computer Science               | M      |  50000 |            45 |           NULL |
+|         2 | Sahil   | Electronics and Communication  | M      |  25000 |            50 |           NULL |
+|         3 | John    | Humanities and Social Sciences | M      | 100000 |            60 |           NULL |
+|         4 | Shelly  | Computer Science               | F      |  75000 |            80 |           NULL |
+|         5 | Anannya | Computer Science               | F      |  45000 |           100 |           NULL |
+|         6 | Sia     | Humanities and Social Sciences | F      |  60000 |            40 |           NULL |
++-----------+---------+--------------------------------+--------+--------+---------------+----------------+
+6 rows in set (0.00 sec)
+
+/*==== 2nd step: write the query to update the vacation hours for salaried faculty based on their
+working hours. If working hours <=50 update their vacation hours to null, working hours
+<=80 update their vacation hours to 20, working hours <=120 update their vacation
+hours to 40. ===== */
+
+update faculty set Vacation_hours=null where Working_hours<=50 or Vacation_hours=20 where Working_hours<=80 or Vacation_hours=40 where Working_hours<=120
+
+select  FacultyID, Name,Department,Gender,Salary,Working_hours,Vacation_hours, IF(Working_hours<=50, Vacation_hours=null, IF(Working_hours<=80, Vacation_hours=20,IF(Working_hours<=120, Vacation_hours=40,Vacation_hours=null)))  from faculty
+FROM OrderDetails;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     

@@ -1,0 +1,25 @@
+Q1/- What is JDBC, Write a note on JDBC driver software.
+
+JDBC:A JDBC driver uses the JDBC™ (Java Database Connectivity) API developed by Sun Microsystems, now part of Oracle, that provides a standard way to access data using the Java™ programming language. Using JDBC, an application can access a variety of databases and run on any platform with a Java Virtual Machine.
+
+In order to communicate java application and Database server , Java developer need the "jdbc driver s/w" and "jdbc api" to perform the DB operation from the Java application.
+
+-->jdbc api comes in the form of 2 packages:
+
+1.java.sql package
+
+2. javax.sql package
+
+JDBC driver :
+==========
+
+--it is a translation s/w written in Java according to the JDBC specificaiton (it comes in the form of Jar file.)
+
+Responsibility of JDBC driver s/w :
+===========================
+
+1. establishing the Connection.
+
+2. receiving the JDBC method calls (java method call ) and translate them into DBMS understandable format.(SQL) and forward them to the DB s/w.
+
+3.Translating the DB s/w given result into the Java format (Java objects) and returns that object toe hte JDBC client.

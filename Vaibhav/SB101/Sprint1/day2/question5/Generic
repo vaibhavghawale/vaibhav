@@ -1,0 +1,90 @@
+Q.5) Explain Difference between Upper Bounded Wildcards and Lower Bounded Wildcards with Example.
+
+Ans:=
+
+WildCard Generic:=
+1. It's mostly used with collection type parameter inside a method.
+2. we can not use wild card with class level.
+3. willdcard is used in 3 way. 
+
+Upper Bounded Wildcards:=
+
+The purpose of upper bounded wildcards is to decrease the restrictions on a variable. It
+restricts the unknown type to be a specific type or a subtype of that type. It is used by
+declaring wildcard character ("?") followed by the extends (in case of, class) or
+implements (in case of, interface) keyword, followed by its upper bound.
+Syntax:
+List<? extends Number>
+here ? is a wildcard character and Number is a predefined java class belongs to
+java.lang package.
+
+			Example:
+			import java.util.*;
+			abstract class Shape{
+			abstract void draw();
+			}
+			class Rectangle extends Shape{
+			void draw(){
+			System.out.println("drawing rectangle");
+			}
+			}
+			class Circle extends Shape{
+			void draw(){
+			System.out.println("drawing circle");
+			}
+			}
+			class Main{
+			//creating a method that accepts only child class of Shape
+			public static void drawShapes(List<? extends Shape> lists){
+			for(Shape s:lists){
+			s.draw();//calling method of Shape class by child class instance
+			}
+			}
+			public static void main(String args[]){
+			List<Rectangle> list1=new ArrayList<Rectangle>();
+			list1.add(new Rectangle());
+			List<Circle> list2=new ArrayList<Circle>();
+			list2.add(new Circle());
+			list2.add(new Circle());
+			drawShapes(list1);
+			drawShapes(list2);
+			}
+}
+
+
+
+
+Lowe Bound Wildcard:=
+Lower Bounded Wildcards:
+The purpose of lower bounded wildcards is to restrict the unknown type to be a specific
+type or a supertype of that type. It is used by declaring wildcard character ("?") followed
+by the super keyword, followed by its lower bound.
+
+Syntax:
+List<? super Integer>
+Suppose, we want to write the method for the list of Integer and its supertype (like
+Number, Object). Using List<? super Integer> is suitable for a list of type Integer or
+any of its superclasses whereas List<Integer> works with the list of type Integer only.
+So, List<? super Integer> is less restrictive than List<Integer>
+			Example: specifying the lower bound wildcards to write the method for List<Integer>
+			and List<Number>.
+			.
+			import java.util.Arrays;
+			import java.util.List;
+			public class Main {
+			public static void addNumbers(List<? super Integer> list) {
+			for(Object n:list)
+			{
+			System.out.println(n);
+			}
+			}
+			public static void main(String[] args) {
+			List<Integer> l1=Arrays.asList(1,2,3);
+			System.out.println("displaying the Integer values");
+			addNumbers(l1);
+			List<Number> l2=Arrays.asList(1.0,2.0,3.0);
+			System.out.println("displaying the Number values");
+			addNumbers(l2);
+			}
+			}
+

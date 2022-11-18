@@ -1,0 +1,158 @@
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| day1               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| web18              |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> use day1;
+Database changed
+mysql> CREATE TABLE STUDENT (
+    -> NAME VARCHAR(20),
+    -> ROLLNO INT,
+    -> BRANCH VARCHAR(20),
+    -> CITY VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into STUDENT values("VIJAYA",150,"CSE","CHENNAI");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES("SITA",202,"ETC","KOLKATA");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENT VALUES("RAVI",300,"EEE","DELHI");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES("BASU",165,"ETC","CHENNAI");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENT VALUES("RASMI",107,"ETC","RKL");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO STUDENT VALUES("KARAN",111,"CSE","CTC");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO STUDENT VALUES("REKHA",117,"BME","BBSR");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| NAME   | varchar(20) | YES  |     | NULL    |       |
+| ROLLNO | int         | YES  |     | NULL    |       |
+| BRANCH | varchar(20) | YES  |     | NULL    |       |
+| CITY   | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student;
++--------+--------+--------+---------+
+| NAME   | ROLLNO | BRANCH | CITY    |
++--------+--------+--------+---------+
+| VIJAYA |    150 | CSE    | CHENNAI |
+| SITA   |    202 | ETC    | KOLKATA |
+| RAVI   |    300 | EEE    | DELHI   |
+| BASU   |    165 | ETC    | CHENNAI |
+| RASMI  |    107 | ETC    | RKL     |
+| KARAN  |    111 | CSE    | CTC     |
+| REKHA  |    117 | BME    | BBSR    |
++--------+--------+--------+---------+
+7 rows in set (0.00 sec)
+
+/*================== 1st step:Count the number of students of each department ===================*/
+mysql> SELECT BRANCH, COUNT(*) FROM STUDENT GROUP BY BRANCH;
++--------+----------+
+| BRANCH | COUNT(*) |
++--------+----------+
+| CSE    |        2 |
+| ETC    |        3 |
+| EEE    |        1 |
+| BME    |        1 |
++--------+----------+
+4 rows in set (0.00 sec)
+
+/*================== 2nd step:Count the number of students of each department where the department name starts with ‘E’ ===================*/
+
+mysql> SELECT BRANCH, COUNT(*) FROM STUDENT where branch LIKE 'E%';
++--------+----------+
+| BRANCH | COUNT(*) |
++--------+----------+
+| ETC    |        4 |
++--------+----------+
+1 row in set (0.00 sec)
+
+/*================== 3rd step: Add a field called MARKS to the table STUDENT which can hold a number upto 8 digit length ===================*/
+mysql> alter table student
+    -> add marks int(8);
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+/*================== 4th step:  Modify the field :"NAME" of the table STUDENT to hold a maximum of 25 character ===================*/
+mysql> alter table student modify name varchar(25);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(25) | YES  |     | NULL    |       |
+| ROLLNO | int         | YES  |     | NULL    |       |
+| BRANCH | varchar(20) | YES  |     | NULL    |       |
+| CITY   | varchar(20) | YES  |     | NULL    |       |
+| marks  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+/*================== 5th step: Delete all rows from the table STUDENT where branch is ETC ===================*/
+mysql> delete from student where branch = 'ETC';
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> select * from student;
++--------+--------+--------+---------+-------+
+| name   | ROLLNO | BRANCH | CITY    | marks |
++--------+--------+--------+---------+-------+
+| VIJAYA |    150 | CSE    | CHENNAI |  NULL |
+| RAVI   |    300 | EEE    | DELHI   |  NULL |
+| KARAN  |    111 | CSE    | CTC     |  NULL |
+| REKHA  |    117 | BME    | BBSR    |  NULL |
++--------+--------+--------+---------+-------+
+4 rows in set (0.00 sec)
+
+/*================== 6th step: Rename the table STUDENT to STUDINFORMATION ===================*/
+mysql> rename table student to STUDINFORMATION;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from STUDINFORMATION;
++--------+--------+--------+---------+-------+
+| name   | ROLLNO | BRANCH | CITY    | marks |
++--------+--------+--------+---------+-------+
+| VIJAYA |    150 | CSE    | CHENNAI |  NULL |
+| RAVI   |    300 | EEE    | DELHI   |  NULL |
+| KARAN  |    111 | CSE    | CTC     |  NULL |
+| REKHA  |    117 | BME    | BBSR    |  NULL |
++--------+--------+--------+---------+-------+
+4 rows in set (0.00 sec)
+
+/*================== 7th step: Delete all the data part from the table STUDENT. ===================*/
+delete from STUDINFORMATION;
+Query OK, 4 rows affected (0.00 sec)
+
+/*================== 8th step: Destroy the table STUDENT. ===================*/
+mysql> drop table STUDINFORMATION;
+Query OK, 0 rows affected (0.02 sec)
+
+
+
+
+

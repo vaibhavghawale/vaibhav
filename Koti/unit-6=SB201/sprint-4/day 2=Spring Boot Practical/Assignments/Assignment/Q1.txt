@@ -1,0 +1,5 @@
+Q1/- What is a Servlet ? What is the role of the DispatcherServlet in the Spring boot rest application.
+
+Servlets are used in Spring-MVC. In Spring-MVC when you write annotation like @Controller, indirectly you are using a Servlet called Dispatcher Servlet. Dispatcher Servlet is defined in web. xml file with properties and class name which is mapped to . jsp pages and Controller part.
+
+DispatcherServlet handles an incoming HttpRequest, delegates the request, and processes that request according to the configured HandlerAdapter interfaces that have been implemented within the Spring application along with accompanying annotations specifying handlers, controller endpoints, and response objects.

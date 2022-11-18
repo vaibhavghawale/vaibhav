@@ -1,0 +1,149 @@
+mysql> create database day3;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day3;
+Database changed
+
+mysql> create table student(
+    ->     roll int primary key,
+    ->     name varchar(12),
+    ->     address varchar(12),
+    ->     mobile varchar(10),
+    ->     date_of_birth date
+    ->      );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table Course(
+    ->      cid int primary key,
+    ->      cname varchar(12),
+    ->      fee int,
+    ->      duration varchar(12)
+    ->      );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc student;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| roll          | int         | NO   | PRI | NULL    |       |
+| name          | varchar(12) | YES  |     | NULL    |       |
+| address       | varchar(12) | YES  |     | NULL    |       |
+| mobile        | varchar(10) | YES  |     | NULL    |       |
+| date_of_birth | date        | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc course;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| cid      | int         | NO   | PRI | NULL    |       |
+| cname    | varchar(12) | YES  |     | NULL    |       |
+| fee      | int         | YES  |     | NULL    |       |
+| duration | varchar(12) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+/*============1st step: Intermediate Table: Establish Many to Many relationships among the above tables ======================*/
+mysql> create table student_course(
+    ->      roll int,
+    ->      cid int,
+    ->      foreign key (roll) references student(roll),
+    ->      foreign key (cid) references course(cid)
+    ->      );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student_course;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| roll  | int  | YES  | MUL | NULL    |       |
+| cid   | int  | YES  | MUL | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+/*================ Inserting details using JDBC ======================*/
+mysql> select * from student;
++------+------+-----------+------------+---------------+
+| roll | name | address   | mobile     | date_of_birth |
++------+------+-----------+------------+---------------+
+|   10 | Ram  | Ayodhya   | 9014559782 | 1990-01-01    |
+|   11 | Adam | Aru       | 9014559789 | 1998-01-01    |
+|   12 | Koti | Nandigama | 9014599789 | 1999-12-12    |
++------+------+-----------+------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from course;
++-----+--------+------+----------+
+| cid | cname  | fee  | duration |
++-----+--------+------+----------+
+| 101 | JAVA   | 1000 | 12 Weeks |
+| 102 | Spring | 1000 | 12 Weeks |
+| 103 | Sql    | 1000 | 12 Weeks |
++-----+--------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student_course;
++------+------+
+| roll | cid  |
++------+------+
+|   10 |  101 |
+|   11 |  102 |
+|   12 |  103 |
++------+------+
+3 rows in set (0.00 sec)
+
+/*============2nd step: Find out all the Students Who enrolled in the course Spring =======================*/
+mysql> select s.roll, s.name, s.address, s.mobile, c.cname, c.fee, c.duration
+    -> from student s, course c, student_course sc
+    -> where
+    -> s.roll = sc.roll AND c.cid=sc.cid AND c.cname='spring';
++------+------+---------+------------+--------+------+----------+
+| roll | name | address | mobile     | cname  | fee  | duration |
++------+------+---------+------------+--------+------+----------+
+|   11 | Adam | Aru     | 9014559789 | Spring | 1000 | 12 Weeks |
++------+------+---------+------------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select s.roll, s.name, s.address, s.mobile, c.cname, c.fee, c.duration
+    -> from student s INNER JOIN course c INNER JOIN student_course sc
+    -> ON
+    -> s.roll = sc.roll AND c.cid=sc.cid AND c.cname='spring';
++------+------+---------+------------+--------+------+----------+
+| roll | name | address | mobile     | cname  | fee  | duration |
++------+------+---------+------------+--------+------+----------+
+|   11 | Adam | Aru     | 9014559789 | Spring | 1000 | 12 Weeks |
++------+------+---------+------------+--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select s.roll, s.name, s.address, s.mobile, c.cname, c.fee, c.duration
+    -> from student s INNER JOIN course c INNER JOIN student_course sc
+    -> ON
+    -> s.roll = sc.roll AND c.cid=sc.cid;
++------+------+-----------+------------+--------+------+----------+
+| roll | name | address   | mobile     | cname  | fee  | duration |
++------+------+-----------+------------+--------+------+----------+
+|   10 | Ram  | Ayodhya   | 9014559782 | JAVA   | 1000 | 12 Weeks |
+|   11 | Adam | Aru       | 9014559789 | Spring | 1000 | 12 Weeks |
+|   12 | Koti | Nandigama | 9014599789 | Sql    | 1000 | 12 Weeks |
++------+------+-----------+------------+--------+------+----------+
+3 rows in set (0.00 sec)
+
+/*============== 3rd step: Find out all the courses details for a particular student in which he enrolled =============*/
+mysql> select s.roll, s.name, s.address, s.mobile, s.date_of_birth, c.cname, c.fee, c.duration
+    -> from student s INNER JOIN course c INNER JOIN student_course sc
+    -> ON
+    -> s.roll = sc.roll AND c.cid=sc.cid;
++------+------+-----------+------------+---------------+--------+------+----------+
+| roll | name | address   | mobile     | date_of_birth | cname  | fee  | duration |
++------+------+-----------+------------+---------------+--------+------+----------+
+|   10 | Ram  | Ayodhya   | 9014559782 | 1990-01-01    | JAVA   | 1000 | 12 Weeks |
+|   11 | Adam | Aru       | 9014559789 | 1998-01-01    | Spring | 1000 | 12 Weeks |
+|   12 | Koti | Nandigama | 9014599789 | 1999-12-12    | Sql    | 1000 | 12 Weeks |
++------+------+-----------+------------+---------------+--------+------+----------+
+3 rows in set (0.00 sec)
+
+

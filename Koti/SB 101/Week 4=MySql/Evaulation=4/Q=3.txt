@@ -1,0 +1,57 @@
+Q3/- How many types of relationships exist among tables in the Database? Explain with some examples, and also mention how to establish these relationships among tables with examples.
+
+
+There are 3 relationships exist among tables in the Database.
+
+ 1.One to One relationship:
+    We achieve One to One relationship by taking foreign key and that foreign key is unique.
+  
+  Example:create table Student(
+    -> roll int primary key,
+    -> name varchar(12) not null,
+    -> address varchar(12) not null,
+    -> mobile varchar(10) not null
+    -> );
+
+   create table db(did int primary key, personid int unique,foreign key (personid) references Student(roll));
+ 
+ 2. One to Many relationship: 
+       We achieve One to Many relationship by taking primary key of one table that makes the foreign key of another table .
+  
+  Example:create table Dept( did int primary key,dname varchar(20));
+          create table Emp(eid int,Deptid int, foreign key (Deptid) refer Dept(did));
+
+3. Many to Many relationship
+      We achieve Many to Many relationship by by creating third table to connect first and second table.
+  
+Example:
+mysql> create table Student(
+    -> roll int primary key,
+    -> name varchar(12) not null,
+    -> address varchar(12) not null,
+    -> mobile varchar(10) not null
+    -> );
+
+
+mysql> create table Course(
+    -> cid int primary key,
+    -> cname varchar(12) not null,
+    -> fee int not null,
+    -> duration varchar(12) not null
+    -> );
+
+
+mysql> create table Student_Course(
+    -> roll int ,
+    -> cid int ,
+    -> foreign key (roll) references student(roll),
+    -> foreign key (cid) references course(cid)
+    -> );
+
+
+
+
+
+
+
+

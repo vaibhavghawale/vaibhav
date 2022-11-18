@@ -1,0 +1,179 @@
+
+/*=========== Here We Don't Want to Create Table in SQL =================*/
+
+mysql> drop database sb201;
+Query OK, 2 rows affected (0.03 sec)
+
+mysql> create database sb201;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use sb201;
+Database changed
+
+/*==================== For Step 1: Single Address ==================*/
+/*====== Here tables created by @Entity =========*/
+mysql> show tables;
++--------------------+
+| Tables_in_sb201    |
++--------------------+
+| employee           |
+| hibernate_sequence |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from  employee;
++-----+------------+---------+---------+-------+--------+
+| eid | city       | country | pincode | ename | salary |
++-----+------------+---------+---------+-------+--------+
+|   1 | Maharastra | pune    | 75455   | Ram   |   7800 |
++-----+------------+---------+---------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from  hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+/*========= For Step 3: Multiple Address Maximum we used this method ==========*/
+
+mysql> drop database sb201;
+Query OK, 2 rows affected (0.03 sec)
+
+mysql> create database sb201;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use sb201;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_sb201    |
++--------------------+
+| employee           |
+| employee_address   |
+| hibernate_sequence |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee_address;
++--------------+------+---------+---------+
+| Employee_eid | city | country | pincode |
++--------------+------+---------+---------+
+|            1 | St1  | C1      | P1      |
+|            1 | St2  | C2      | P2      |
++--------------+------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+-------+--------+
+| eid | ename | salary |
++-----+-------+--------+
+|   1 | Ram   |   7800 |
++-----+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)	
+
+/*====  We are Adding below code in Employee for changeing name of table and column name
+  @JoinTable(name="empaddress",joinColumns=@JoinColumn(name="emp_id"))  ====*/
+
+mysql> show tables;
++--------------------+
+| Tables_in_sb201    |
++--------------------+
+| empaddress         |
+| employee           |
+| employee_address   |
+| hibernate_sequence |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from empaddress;
++--------+------+---------+---------+
+| emp_id | city | country | pincode |
++--------+------+---------+---------+
+|      2 | St1  | C1      | P1      |
+|      2 | St2  | C2      | P2      |
++--------+------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+-------+--------+
+| eid | ename | salary |
++-----+-------+--------+
+|   1 | Ram   |   7800 |
+|   2 | Ram   |   7800 |
++-----+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee_address;
++--------------+------+---------+---------+
+| Employee_eid | city | country | pincode |
++--------------+------+---------+---------+
+|            1 | St1  | C1      | P1      |
+|            1 | St2  | C2      | P2      |
++--------------+------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+/*=== After deleting database again run the app see results below ====*/
+
+mysql> drop database sb201;
+Query OK, 4 rows affected (0.03 sec)
+
+mysql> create database sb201;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use sb201;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_sb201    |
++--------------------+
+| empaddress         |
+| employee           |
+| hibernate_sequence |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from empaddress;
++--------+------+---------+---------+
+| emp_id | city | country | pincode |
++--------+------+---------+---------+
+|      1 | St1  | C1      | P1      |
+|      1 | St2  | C2      | P2      |
++--------+------+---------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-----+-------+--------+
+| eid | ename | salary |
++-----+-------+--------+
+|   1 | Ram   |   7800 |
++-----+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+

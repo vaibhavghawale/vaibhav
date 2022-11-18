@@ -1,0 +1,94 @@
+
+
+Q.3) What is exception handling in java, Write the hierarchy of Exception class and, Mention some
+of the predefined Exception classes at least 5, and the reason when those exception class
+object is generated in our application.
+
+Ans:=
+
+Exception : In java exceptions are the objects of some of the classes(predefined classes)  created by JVM to represent the corresponding logical error.
+
+there are 2 types of errors in java:
+
+1.syntax error: improper environment or syntactical error, it result in compile time error.
+
+2.logical error: for some type of logical mistakes, jvm would be unable to execute the application this result in logical error.
+
+ 
+--for each and every logical error, there are some predefined classes in java, whose object will be created by the jvm whenever it encounters that corresponding logical error.
+
+
+java.lang.ArithmaticException
+java.lang.NullPointerException
+java.lang.ClassCastException
+java.lang.ArrayOutOfBoundException
+
+
+
+--whenver, jvm encounters a logical error, it creates an obejct of the 
+corresponding predefined exception class automatically. and put(throw)
+that object in our application at the same line, if we don't handle that 
+exception class object explicitly then that obj will reaches back to the
+jvm , jvm will receive that obj and terminate our application abnormally.
+
+--in order to avoid the abnormal termination, we need to avoid that exception class obj should not reaches back to the jvm and by doing so we can prevent the abnormal termination.
+
+--we handle that exception class obj by just assigning that obj to the corresponding class variable.
+
+
+--injava we have 2 keywords 1. try and 2.catch using which we can handle the exception class obj.
+
+
+--try block will recognize the exception class obj created by the jvm and gets hold on that obj, and then transfer that obj to the catch block.
+
+--in catch block we should be able to assign that obj to the appropriate class
+ref variable so that it will reaches back to the jvm and therefore our application
+will not terminate abnormally.
+
+
+example:
+
+Demo.java:
+--------------
+
+package com.masai;
+
+public class Demo{
+	
+	public static void main(String[] args) {
+		
+		System.out.println("inside main of Demo");
+		
+		
+	
+		try {
+			int i=10;
+			
+			int j=0;
+			
+			
+			int result = i/j; 
+			
+			System.out.println(result);
+		
+		
+		}catch(ArithmeticException ae) {
+			
+			System.out.println("inside catch block");
+			//System.out.println(ae);
+			
+			//System.out.println(ae.getMessage());
+			ae.printStackTrace();
+			
+			//alternate logic
+			
+			
+		}
+		
+		
+		
+		System.out.println("end of main...");
+		
+	}
+	
+}

@@ -1,0 +1,15 @@
+Explain the core concepts of Maven.
+
+Maven is based on the concept of project object model (POM) file. POM is an XML file which contains project resources like source code, test code and dependencies (external JARs) etc. The POM file should be in the project’s root directory.
+
+Maven reads the pom.xml file.
+Downloads dependencies into local repository.
+Execute life cycles, build phases and goals.
+Execute plugins.
+
+Maven Core Concepts:
+POM Files
+Build Life Cycles, Phases and Goals
+Dependencies and Repositories
+Build Plugins
+Build Profiles

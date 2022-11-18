@@ -1,0 +1,45 @@
+Q2) Explain the difference between Checked and Unchecked exceptions. write some
+examples of checked and unchecked exception classes.
+
+
+Unchecked exceptions:
+ 1.Unchecked Exceptions occur at the runtime of the program.
+ 2.These are also known as Runtime Exceptions.
+ 3. It is not a requirement to handle or catch them at compile time.
+ 4.the classes which are the direct child of RuntimeException including the RuntimeException class 
+ is known as unchecked exception.
+ 
+Examples Unchecked Exceptions
+ 1.Arithmetic Exception
+ 2.Null Pointer Exception
+ 3.Array Index Out of Bounds Exception
+ 3.Unsupported Operation Exception
+ 3.Security Exception
+ 4.System Exception
+ 5.Missing Resource Exception
+ 6.No Such Element Exception
+ 7.Undeclared Throwable Exception
+ 8.Empty Stack Exception
+ 
+ 
+Checked Exceptions:
+  1.Checked Exceptions occur at the compile time of the program.
+  2.These exceptions should be either caught or handled during compile time.
+  3.If we do not catch or handle them then the compiler will throw a compilation error. 
+  4.the classes which are direct child of the Exception class (except RuntimeException class)
+    is known as checked exception class (including Exception class also)
+ 
+Examples of Checked Exceptions:
+ 1.No Such Field Exception
+ 2.File Not Found Exception
+ 3.Interrupted Exception
+ 4.No Such Method Exception
+ 5.Class Not Found Exception
+ 5.Parse Exception
+ 6.Clone Not Supported Exception
+ 7.Instantiation Exception
+ 
+ 
+
+ 
+ 

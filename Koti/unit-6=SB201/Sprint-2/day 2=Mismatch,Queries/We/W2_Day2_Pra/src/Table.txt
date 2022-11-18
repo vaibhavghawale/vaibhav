@@ -1,0 +1,64 @@
+
+/*==================== Here We Don't Want to create table in sql ===================*/
+
+mysql> create database sb201;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use sb201;
+Database changed
+mysql> select * from account;
+Empty set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |     880 | Ramesh |
+|     2 |     880 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |    1880 | Ramesh |
+|     2 |    1380 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |    2380 | Ramesh |
+|     2 |    1880 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |     500 | Ramesh |
+|     2 |     500 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |     500 | Ramesh |
+|     2 |    1500 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from account;
++-------+---------+--------+
+| accno | balance | name   |
++-------+---------+--------+
+|     1 |    1100 | Ramesh |
+|     2 |    1500 | Ram    |
++-------+---------+--------+
+2 rows in set (0.00 sec)

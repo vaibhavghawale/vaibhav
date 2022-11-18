@@ -1,0 +1,22 @@
+Q. Explain difference between PriorityQueue() and LinkedList().
+
+Ans:=
+
+
+Priority Queue
+
+A PriorityQueue is used when the objects are supposed to be processed based on the priority. 
+It is known that a Queue follows the First-In-First-Out algorithm, 
+but sometimes the elements of the queue are needed to be processed according to the priority,
+ that’s when the PriorityQueue comes into play. 
+The PriorityQueue is based on the priority heap. 
+The elements of the priority queue are ordered according to the natural ordering, or by a Comparator provided at queue construction time, 
+depending on which constructor is used. 
+
+LinkedList:-
+
+The LinkedList class is a collection which can contain many objects of the same type, just like the ArrayList.
+
+The LinkedList class has all of the same methods as the ArrayList class because they both implement the List interface. This means that you can add items, change items, remove items and clear the list in the same way.
+
+However, while the ArrayList class and the LinkedList class can be used in the same way, they are built very differently.

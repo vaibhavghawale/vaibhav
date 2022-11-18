@@ -1,0 +1,27 @@
+What are the rules for a table to be in 1NF, 2NF, and 3NF?
+
+Ans:= A large database defined as a single relation may result in data duplication. This repetition of data may result in:
+
+Making relations very large.
+It isn't easy to maintain and update data as it would involve searching many records in relation.
+Wastage and poor utilization of disk space and resources.
+The likelihood of errors and inconsistencies increases.
+So to handle these problems, we should analyze and decompose the relations with redundant data into smaller, simpler, and well-structured relations that are satisfy desirable properties. Normalization is a process of decomposing the relations into relations with fewer attributes.
+
+What is Normalization?
+Normalization is the process of organizing the data in the database.
+Normalization is used to minimize the redundancy from a relation or set of relations. It is also used to eliminate undesirable characteristics like Insertion, Update, and Deletion Anomalies.
+Normalization divides the larger table into smaller and links them using relationships.
+The normal form is used to reduce redundancy from the database table.
+Why do we need Normalization?
+
+The main reason for normalizing the relations is removing these anomalies. Failure to eliminate anomalies leads to data redundancy and can cause data integrity and other problems as the database grows. Normalization consists of a series of guidelines that helps to guide you in creating a good database structure.
+
+Data modification anomalies can be categorized into three types:
+
+Insertion Anomaly: Insertion Anomaly refers to when one cannot insert a new tuple into a relationship due to lack of data.
+Deletion Anomaly: The delete anomaly refers to the situation where the deletion of data results in the unintended loss of some other important data.
+Updatation Anomaly: The update anomaly is when an update of a single data value requires multiple rows of data to be updated.
+Types of Normal Forms:
+Normalization works through a series of stages called Normal forms. The normal forms apply to individual relations. The relation is said to be in particular normal form if it satisfies constraints.
+

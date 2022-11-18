@@ -1,0 +1,14 @@
+Q5. Why to use ORM and What are the benefits of ORM?
+
+Different database systems access data in myriad ways, and ORM helps you maintain objects even when the sources and apps they access change over time. ORM is commonly used to streamline the migration of data between databases
+
+Advantages of ORM
+They write correct and optimized SQL queries, thereby eliminating the hassle for developers
+They make the code easier to update, maintain, and reuse as the developer can think of, and manipulate data as objects
+ORMs will shield your application from SQL injection attacks since the framework will filter the data for you!
+ORMs provide the concept of Database Abstraction which makes switching databases easier and creates a consistent code base for your application.
+Now next time when you make a pet project, get your hands dirty by making your CRUD operations using the particular ORM supported for the language you are using. Some commonly used ORMs are :
+
+Django ORM for Django
+SQL Alchemy for Flask
+Java - Hibernate

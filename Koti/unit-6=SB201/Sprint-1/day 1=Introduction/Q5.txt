@@ -1,0 +1,12 @@
+What are the different types of Maven repositories?
+
+a repository is a store where maven maintains plugins, archetypes, and lots of jar files used for building different kinds of java projects.
+
+maven repo are of 3 types:
+
+1.central repo :- it is the maven's own repo in which it maintains all kinds of project related plugins, archetypes, jars etc.
+Eg: https://repo1.maven.org/maven2
+
+2.remote repo : this repo is maintained within the organization for sharing plugins, archetypes and jar files for multiple projects withing orgnizations. ex: masairepo
+
+3.local repo: this repo will be created inside the developer computer.  (.m2) is the name for this repo.

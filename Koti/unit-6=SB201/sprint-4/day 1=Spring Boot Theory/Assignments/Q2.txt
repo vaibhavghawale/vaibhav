@@ -1,0 +1,13 @@
+Q2/- What is the HTTP protocol, explain about the HTTP request and the HTTP response
+
+HTTP protocol:
+--------------
+The Hypertext Transfer Protocol (HTTP) is a protocol (a set of rules that describes how information is exchanged) that allows a client (such as a web browser) and a web server to communicate with each other. HTTP is based on a request-response model.
+
+HTTP request:
+-------------
+An HTTP request is made by a client, to a named host, which is located on a server. The aim of the request is to access a resource on the server. To make the request, the client uses components of a URL (Uniform Resource Locator), which includes the information needed to access the resource.
+
+HTTP response:
+--------------
+An HTTP response is made by a server to a client. The aim of the response is to provide the client with the resource it requested, or inform the client that the action it requested has been carried out; or else to inform the client that an error occurred in processing its request.

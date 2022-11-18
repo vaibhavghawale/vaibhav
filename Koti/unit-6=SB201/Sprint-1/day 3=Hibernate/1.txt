@@ -1,0 +1,56 @@
+create table employee(
+empId int primary key,
+name varchar(15) not null,
+address varchar(15) not null,
+salary int not null
+)
+
+mysql> insert into employee values(1,'Koti','AP',10000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into employee values(2,'Krishna','MP',8000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(3,'Divya','AP',10000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++-------+---------+---------+--------+
+| empId | name    | address | salary |
++-------+---------+---------+--------+
+|     1 | Koti    | AP      |  10000 |
+|     2 | Krishna | MP      |   8000 |
+|     3 | Divya   | AP      |  10000 |
++-------+---------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+---------+---------+--------+
+| empId | name    | address | salary |
++-------+---------+---------+--------+
+|     1 | Koti    | AP      |  10000 |
+|     2 | Krishna | MP      |   8000 |
+|     3 | Divya   | AP      |  10000 |
+|     4 | Amit    | TN      |  20000 |
++-------+---------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+---------+---------+--------+
+| empId | name    | address | salary |
++-------+---------+---------+--------+
+|     1 | Koti    | AP      |  10000 |
+|     2 | Krishna | MP      |   8000 |
+|     3 | Divya   | AP      |  10000 |
++-------+---------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+---------+---------+--------+
+| empId | name    | address | salary |
++-------+---------+---------+--------+
+|     1 | Koti    | AP      |  10000 |
+|     2 | Krishna | MP      |  10000 |
+|     3 | Divya   | AP      |  10000 |
++-------+---------+---------+--------+
+3 rows in set (0.00 sec)

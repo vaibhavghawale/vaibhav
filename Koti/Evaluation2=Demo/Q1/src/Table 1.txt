@@ -1,0 +1,66 @@
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_day4     |
++--------------------+
+| employee           |
+| hibernate_sequence |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++---------------------+-----+-------+------------+-----------------+--------+
+| DTYPE               | eid | name  | costPerDay | noOfWorkingDays | salary |
++---------------------+-----+-------+------------+-----------------+--------+
+| Employee            |   1 | Ram   |       NULL |            NULL |   NULL |
+| SalaryEmployee      |   2 | Mohan |       NULL |            NULL |  85000 |
+| ContractualEmployee |   3 | Hari  |       3000 |              10 |   NULL |
++---------------------+-----+-------+------------+-----------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> drop database day4;
+Query OK, 4 rows affected (0.04 sec)
+
+/*========================= After using @MappedSuperclass  ====================*/
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| contractualemployee |
+| hibernate_sequence  |
+| salaryemployee      |
++---------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from contractualemployee;
++-----+------+------------+-----------------+
+| eid | name | costPerDay | noOfWorkingDays |
++-----+------+------------+-----------------+
+|   2 | Hari |       3000 |              10 |
++-----+------+------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        3 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from salaryemployee;
++-----+-------+--------+
+| eid | name  | salary |
++-----+-------+--------+
+|   1 | Mohan |  85000 |
++-----+-------+--------+
+1 row in set (0.00 sec)

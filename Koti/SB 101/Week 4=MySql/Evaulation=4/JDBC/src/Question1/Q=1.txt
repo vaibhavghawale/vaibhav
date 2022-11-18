@@ -1,0 +1,70 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql> create database day1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day1;
+Database changed
+mysql> create table Student(
+    -> roll int primary key,
+    -> name varchar(12) not null,
+    -> address varchar(12) not null,
+    -> mobile varchar(10) not null
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table Course(
+    -> cid int primary key,
+    -> cname varchar(12) not null,
+    -> fee int not null,
+    -> duration varchar(12) not null
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll    | int         | NO   | PRI | NULL    |       |
+| name    | varchar(12) | NO   |     | NULL    |       |
+| address | varchar(12) | NO   |     | NULL    |       |
+| mobile  | varchar(10) | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc course;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| cid      | int         | NO   | PRI | NULL    |       |
+| cname    | varchar(12) | NO   |     | NULL    |       |
+| fee      | int         | NO   |     | NULL    |       |
+| duration | varchar(12) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table Student_Course(
+    -> roll int ,
+    -> cid int ,
+    -> foreign key (roll) references student(roll),
+    -> foreign key (cid) references course(cid)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc student_course;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| roll  | int  | YES  | MUL | NULL    |       |
+| cid   | int  | YES  | MUL | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)

@@ -1,0 +1,13 @@
+mysql> create database  bankDB;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use bankdb;
+Database changed
+
+create table account(
+id int Primary key,
+email varchar(12),
+address varchar(12),
+balance double
+);
+

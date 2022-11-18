@@ -1,0 +1,97 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+#form{
+    margin: auto;
+    width: 35%;
+    margin-top: 5%;
+    border: 3px solid ;
+    padding: 3%;
+
+}
+h1{
+   text-align: center;
+   margin-top: 2%;
+   color: teal;
+}
+input{
+width: 70px;
+height: 42px;
+border-radius: 4px;
+padding: 2px;
+margin-right: 10px;
+font: 18px sans-serif;
+border: 1px solid #7fd826cc;
+}
+
+input[type="text"]:focus {
+border: 1px solid #faa619;
+}
+p{
+    color: rgb(222, 51, 51);
+     font-weight: bold;
+
+}
+#avg_score{
+    color: #faa619;
+}
+.note{
+    margin-bottom: 10%;
+}
+.note+h1{
+    margin-bottom: 10%;
+}
+button{
+display: none;
+height: 50px;
+padding: .1% 3%;
+background-color: #61962B;
+border: 0;
+color: aliceblue;
+font-weight: bold;
+cursor: pointer;
+margin-top: 6%;
+margin-left: 70%;
+margin-bottom: 2%;
+}
+button:active{
+background-color:#61962B;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+.correction{
+/* display: flex; */
+display: none;
+position: absolute;
+margin-top: 4.5%;
+margin-left: 60%;
+}
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (max-width: 650px)
+{
+        #form{
+                margin: auto;
+                width: 100%;
+                margin-top: 5%;
+                border: 3px solid ;
+                padding: 3%;
+             }
+
+        input{
+                width: 40px;
+                height: 40px;
+                border-radius: 4px;
+                padding: 2px;
+                margin-right: 10px;
+                font: 18px sans-serif;
+                border: 1px solid #7fd826cc;
+             }
+             .correction{
+                margin-top: 8%;
+             }
+}

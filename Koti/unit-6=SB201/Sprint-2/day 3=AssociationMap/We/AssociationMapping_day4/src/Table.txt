@@ -1,0 +1,368 @@
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+
+/*=========== After Running in hybernate ============*/
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| department          |
+| department_employee |
+| employee            |
+| hibernate_sequence  |
++---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-------+----------+
+| deptId | dname | location |
++--------+-------+----------+
+|      3 | HR    | Kolkata  |
++--------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from department_employee; //Linking Table
++-------------------+------------+
+| Department_deptId | list_empId |
++-------------------+------------+
+|                 3 |          1 |
+|                 3 |          2 |
++-------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+
+| empId | name   | salary |
++-------+--------+--------+
+|     1 | ram    |   8500 |
+|     2 | ramesh |   7500 |
++-------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+/*================= After Adding Cascade in one to many relation table ===========*/
+
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| department          |
+| department_employee |
+| employee            |
+| hibernate_sequence  |
++---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-------+----------+
+| deptId | dname | location |
++--------+-------+----------+
+|      3 | HR    | Kolkata  |
+|      4 | Sales | Andhra   |
++--------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from department_employee;
++-------------------+------------+
+| Department_deptId | list_empId |
++-------------------+------------+
+|                 3 |          1 |
+|                 3 |          2 |
+|                 4 |          5 |
+|                 4 |          6 |
++-------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+
+| empId | name   | salary |
++-------+--------+--------+
+|     1 | ram    |   8500 |
+|     2 | ramesh |   7500 |
+|     5 | Koti   |   8500 |
+|     6 | Raj    |   7500 |
++-------+--------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        7 |
++----------+
+1 row in set (0.00 sec)
+
+/* ======== After Adding @JoinTable in Department table =========== */
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| department          |
+| department_employee |
+| dept_emp            |
+| employee            |
+| hibernate_sequence  |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-------+----------+
+| deptId | dname | location |
++--------+-------+----------+
+|      3 | HR    | Kolkata  |
+|      4 | Sales | Andhra   |
+|      7 | Sales | Andhra   |
++--------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department_employee;
++-------------------+------------+
+| Department_deptId | list_empId |
++-------------------+------------+
+|                 3 |          1 |
+|                 3 |          2 |
+|                 4 |          5 |
+|                 4 |          6 |
++-------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from dept_emp;
++-----+-----+
+| did | eid |
++-----+-----+
+|   7 |   8 |
+|   7 |   9 |
++-----+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+
+| empId | name   | salary |
++-------+--------+--------+
+|     1 | ram    |   8500 |
+|     2 | ramesh |   7500 |
+|     5 | Koti   |   8500 |
+|     6 | Raj    |   7500 |
+|     8 | Koti   |   8500 |
+|     9 | Raj    |   7500 |
++-------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|       10 |
++----------+
+1 row in set (0.00 sec)
+
+/*============== Many to One ======================*/
+
+mysql> drop database day4;
+Query OK, 5 rows affected (0.18 sec)
+
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_day4     |
++--------------------+
+| department         |
+| employee           |
+| hibernate_sequence |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-------+----------+
+| deptId | dname | location |
++--------+-------+----------+
+|      2 | Sales | mumbai   |
++--------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+-------------+
+| empId | name   | salary | dept_deptId |
++-------+--------+--------+-------------+
+|     1 | ram    |   7800 |           2 |
+|     3 | ramesh |   8850 |           2 |
++-------+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+/*=========== Step: 3  One to Many (bidirectional):- ====================*/
+
+mysql> drop database day4;
+Query OK, 3 rows affected (0.03 sec)
+
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| department          |
+| department_employee |
+| employee            | //inside employee foreignkey will created
+| hibernate_sequence  |
++---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|      1 | Marketing | Kolkata  |
++--------+-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from department_employee;
++-------------------+------------+
+| Department_deptId | emps_empId |
++-------------------+------------+
+|                 1 |          2 |
+|                 1 |          3 |
++-------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee; //inside employee foreignkey will created
++-------+--------+--------+-------------+
+| empId | name   | salary | dept_deptId |
++-------+--------+--------+-------------+
+|     2 | Sunil  |   7800 |           1 |
+|     3 | Suresh |   8800 |           1 |
++-------+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from hibernate_sequence;
++----------+
+| next_val |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+/*======== we use mappedBy = "dept" for not creating 3rd table ===============*/
+
+mysql> drop database day4;
+Query OK, 4 rows affected (0.05 sec)
+
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_day4     |
++--------------------+
+| department         |
+| employee           |
+| hibernate_sequence |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|      1 | Marketing | Kolkata  |
++--------+-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+-------------+
+| empId | name   | salary | dept_deptId |
++-------+--------+--------+-------------+
+|     2 | Sunil  |   7800 |           1 |
+|     3 | Suresh |   8800 |           1 |
++-------+--------+--------+-------------+
+2 rows in set (0.00 sec)
+
+/*================== for Many to Many ==================*/
+
+mysql> drop database day4;
+Query OK, 3 rows affected (0.04 sec)
+
+mysql> create database day4;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use day4;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_day4      |
++---------------------+
+| department          |
+| department_employee |
+| employee            |
+| employee_department |
+| hibernate_sequence  |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from department;
++--------+-----------+----------+
+| deptId | dname     | location |
++--------+-----------+----------+
+|      1 | sales     | kolkata  |
+|      4 | Marketing | delhi    |
++--------+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from department_employee;
++-------------------+------------+
+| Department_deptId | emps_empId |
++-------------------+------------+
+|                 1 |          2 |
+|                 1 |          3 |
+|                 4 |          3 |
++-------------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++-------+--------+--------+
+| empId | name   | salary |
++-------+--------+--------+
+|     2 | ram    |  50000 |
+|     3 | dinesh |  30000 |
++-------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee_department;
++----------------+-----------------+
+| Employee_empId | deptList_deptId |
++----------------+-----------------+
+|              2 |               1 |
+|              3 |               1 |
+|              3 |               4 |
++----------------+-----------------+
+3 rows in set (0.00 sec)
+

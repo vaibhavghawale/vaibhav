@@ -1,0 +1,24 @@
+Q1.Write down some predefined Functional interfaces in the java library at least 4
+  interfaces, with their methods.
+  
+Since Java SE 1.8 onwards, there are many interfaces that are converted into functional interface.
+All these interfaces are annotated with @FunctionalInterface. These interfaces are as follows. 
+
+1.Runnable –> This interface only contains the run() method.
+2.Comparable –> This interface only contains the compareTo() method.
+3.ActionListener –> This interface only contains the actionPerformed() method.
+4.Callable –> This interface only contains the call() method.
+
+Java SE 8 included four main kinds of functional interfaces which can be applied in multiple situations. 
+These are:
+
+1.Consumer
+2.Predicate
+3.Function 
+4.Supplier
+Amidst the previous four interfaces, the first three interfaces,i.e., 
+Consumer, Predicate, and Function, likewise have additions that are provided beneath – 
+1.Consumer -> Bi-Consumer
+2.Predicate -> Bi-Predicate
+3.Function -> Bi-Function, Unary Operator, Binary Operator 
+  
