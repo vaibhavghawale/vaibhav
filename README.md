@@ -1,5 +1,12 @@
-<h1 align="center">Team Digi Dreamers</h1>
+<h1 align="center">Vaibhav Ghawale Web-18</h1>
 
-<p>This Repository for helping each other to solving problems during assignment. We work as a team here and finding different solution to solve same problems.</p>
-<h3> Collabarators</h3>
-<p>1. Vaibhav Ghawale</p>
+<p>In this repository you can find all the assignmnet of Masai School</p>
+<h3>Course as follows</h3>
+1.unit 2: JS101
+2.unit 3: JS201
+Java 
+3. unit 4: JA101
+4. Unit 5: SB101
+5. Unit 6: SB201
+6. Revision: Revision
+
